@@ -1,6 +1,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { Link } from "react-router";
+import myImage from "@/assets/Titan+Freight+TF-image-sWOvgOOFk1g.webp";
 import {
   Truck,
   Container,
@@ -106,7 +107,7 @@ export function HomePage() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(${heroImage})`,
+              backgroundImage: `url(${myImage})`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0A2463]/95 via-[#0A2463]/85 to-transparent" />

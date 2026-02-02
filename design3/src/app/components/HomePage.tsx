@@ -10,7 +10,7 @@ import {
   Truck,
   MapPin,
 } from "lucide-react";
-
+import myImage from "@/assets/Titan+Freight+TF-image-sWOvgOOFk1g.webp";
 interface HomePageProps {
   onNavigate: (page: string) => void;
 }
@@ -125,7 +125,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={heroImage}
+            src={myImage}
             alt="Container Shipping"
             className="w-full h-full object-cover"
           />

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-
+import myImage from "@/assets/image.webp";
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ export function Navigation() {
             {navLinks.map((link) => (
               <Link key={link.path} to={link.path} className="relative group">
                 <span
-                  className={`text-sm font-medium transition-colors [text-shadow:_-1px_-1px_0_white,_1px_-1px_0_white,_-1px_1px_0_white,_1px_1px_0_white] ${
+                  className={`text-sm font-medium transition-colors  ${
                     location.pathname === link.path
                       ? "text-[#0A2463]"
                       : "text-gray-600 hover:text-[#0A2463]"
