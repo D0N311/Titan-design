@@ -1,0 +1,57 @@
+@import "./tailwind.css";
+@import "./theme.css";
+
+/* Smooth scrolling and custom cursor styles */
+html {
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  html {
+    cursor: auto;
+  }
+}
+
+/* Hide default cursor on desktop */
+@media (min-width: 769px) {
+  * {
+    cursor: none !important;
+  }
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: none !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #fb8b24;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e87a15;
+}
+
+/* Selection color */
+::selection {
+  background-color: #fb8b24;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #fb8b24;
+  color: white;
+}
