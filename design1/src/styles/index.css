@@ -4,7 +4,7 @@
 /* Smooth scrolling and custom cursor styles */
 html {
   scroll-behavior: smooth;
-  cursor: none;
+  /* cursor: none; */
 }
 
 @media (max-width: 768px) {
@@ -16,14 +16,14 @@ html {
 /* Hide default cursor on desktop */
 @media (min-width: 769px) {
   * {
-    cursor: none !important;
+    /* cursor: none !important; */
   }
   a,
   button,
   input,
   textarea,
   select {
-    cursor: none !important;
+    /* cursor: none !important; */
   }
 }
 

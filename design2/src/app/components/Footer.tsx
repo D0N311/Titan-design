@@ -1,6 +1,14 @@
 import { Link } from "react-router";
 import { motion } from "motion/react";
-import { Truck, Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from "lucide-react";
+import {
+  Truck,
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 export function Footer() {
   return (
@@ -18,7 +26,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Delivering efficient and secure container transport solutions across Sydney Metro area with precision and care.
+              Delivering efficient and secure container transport solutions
+              across Sydney Metro area with precision and care.
             </p>
           </div>
 
@@ -31,6 +40,8 @@ export function Footer() {
                 { path: "/about", label: "About Us" },
                 { path: "/services", label: "Services" },
                 { path: "/contact", label: "Contact" },
+                { path: "/privacy", label: "Privacy Policy" },
+                { path: "/terms", label: "Terms & Conditions" },
               ].map((link) => (
                 <li key={link.path}>
                   <Link
@@ -66,13 +77,19 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-gray-400">
                 <Phone size={16} className="text-orange-500 flex-shrink-0" />
-                <a href="tel:+61234567890" className="hover:text-orange-500 transition-colors">
+                <a
+                  href="tel:+61234567890"
+                  className="hover:text-orange-500 transition-colors"
+                >
                   +61 2 3456 7890
                 </a>
               </li>
               <li className="flex items-center gap-2 text-gray-400">
                 <Mail size={16} className="text-orange-500 flex-shrink-0" />
-                <a href="mailto:info@titanfreight.com.au" className="hover:text-orange-500 transition-colors">
+                <a
+                  href="mailto:info@titanfreight.com.au"
+                  className="hover:text-orange-500 transition-colors"
+                >
                   info@titanfreight.com.au
                 </a>
               </li>
@@ -102,8 +119,18 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>&copy; 2026 TitanFreight. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-orange-500 transition-colors">Terms of Service</a>
+              <Link
+                to="/privacy"
+                className="hover:text-orange-500 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms"
+                className="hover:text-orange-500 transition-colors"
+              >
+                Terms & Conditions
+              </Link>
             </div>
           </div>
         </div>

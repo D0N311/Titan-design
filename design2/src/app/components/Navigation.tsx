@@ -16,11 +16,16 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top when navigating to different pages
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
     { path: "/services", label: "Services" },
-    { path: "/contact", label: "Contact" },
+    // { path: "/contact", label: "Contact" },
   ];
 
   return (
@@ -50,7 +55,11 @@ export function Navigation() {
             </motion.div>
             <span
               className={`text-2xl font-bold transition-colors ${
-                isScrolled ? "text-gray-900" : "text-white"
+                location.pathname === "/"
+                  ? isScrolled
+                    ? "text-gray-900"
+                    : "text-white"
+                  : "text-gray-900"
               }`}
             >
               Titan<span className="text-orange-500">Freight</span>
@@ -63,9 +72,11 @@ export function Navigation() {
               <Link key={link.path} to={link.path} className="relative group">
                 <span
                   className={`transition-colors ${
-                    isScrolled
-                      ? "text-gray-700 hover:text-orange-500"
-                      : "text-white hover:text-orange-300"
+                    location.pathname === "/"
+                      ? isScrolled
+                        ? "text-gray-700 hover:text-orange-500"
+                        : "text-white hover:text-orange-300"
+                      : "text-gray-700 hover:text-orange-500"
                   } ${location.pathname === link.path ? "font-semibold" : ""}`}
                 >
                   {link.label}
@@ -80,7 +91,7 @@ export function Navigation() {
               </Link>
             ))}
             <motion.a
-              href="#contact"
+              href="/contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2.5 rounded-full font-medium shadow-lg hover:shadow-xl transition-shadow"
@@ -93,7 +104,11 @@ export function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className={`md:hidden p-2 rounded-lg transition-colors ${
-              isScrolled ? "text-gray-900" : "text-white"
+              location.pathname === "/"
+                ? isScrolled
+                  ? "text-gray-900"
+                  : "text-white"
+                : "text-gray-900"
             }`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -119,16 +134,18 @@ export function Navigation() {
                     className={`block px-4 py-2 rounded-lg transition-colors ${
                       location.pathname === link.path
                         ? "bg-orange-500 text-white"
-                        : isScrolled
-                          ? "text-gray-700 hover:bg-gray-100"
-                          : "text-white hover:bg-white/10"
+                        : location.pathname === "/"
+                          ? isScrolled
+                            ? "text-gray-700 hover:bg-gray-100"
+                            : "text-white hover:bg-white/10"
+                          : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
                     {link.label}
                   </Link>
                 ))}
                 <motion.a
-                  href="#contact"
+                  href="/contact"
                   whileTap={{ scale: 0.95 }}
                   className="block text-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2.5 rounded-full font-medium mt-4"
                   onClick={() => setIsMobileMenuOpen(false)}

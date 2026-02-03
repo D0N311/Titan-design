@@ -16,6 +16,11 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Scroll to top when navigating to different pages
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [location.pathname]);
+
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
@@ -28,16 +33,26 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+        isScrolled ? "bg-red/95 backdrop-blur-md shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="flex flex-col">
-              <span className="text-2xl font-bold text-[#0A2463]">TITAN</span>
-              <span className="text-xs tracking-[0.3em] text-[#FB8B24]">
+              <span
+                className={`text-2xl font-bold ${
+                  location.pathname === "/" ? "text-white" : "text-[#0A2463]"
+                }`}
+              >
+                TITAN
+              </span>
+              <span
+                className={`text-xs tracking-[0.3em] ${
+                  location.pathname === "/" ? "text-white" : "text-[#FB8B24]"
+                }`}
+              >
                 FREIGHT
               </span>
             </div>
@@ -49,9 +64,13 @@ export function Navigation() {
               <Link key={link.path} to={link.path} className="relative group">
                 <span
                   className={`text-sm font-medium transition-colors  ${
-                    location.pathname === link.path
-                      ? "text-[#0A2463]"
-                      : "text-gray-600 hover:text-[#0A2463]"
+                    location.pathname === "/"
+                      ? location.pathname === link.path
+                        ? "text-white font-bold"
+                        : "text-white/80 hover:text-white"
+                      : location.pathname === link.path
+                        ? "text-[#0A2463]"
+                        : "text-gray-600 hover:text-[#0A2463]"
                   }`}
                 >
                   {link.label}
@@ -75,7 +94,11 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-[#0A2463]"
+            className={`md:hidden p-2 ${
+              location.pathname === "/"
+                ? "text-white hover:text-white/80"
+                : "text-gray-600 hover:text-[#0A2463]"
+            }`}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

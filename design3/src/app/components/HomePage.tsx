@@ -47,7 +47,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
     },
   ];
 
-  const clients = ["Woolworths", "Coles", "Amazon", "DHL", "FedEx", "Bunnings"];
+  const clients = [
+    {
+      name: "Amazon",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png",
+    },
+    {
+      name: "DHL",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DHL_Logo.svg/200px-DHL_Logo.svg.png",
+    },
+  ];
 
   const services = [
     {
@@ -231,22 +240,31 @@ export function HomePage({ onNavigate }: HomePageProps) {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4">Trusted by Clients</h2>
+            <h2 className="text-3xl font-bold mb-4">
+              Trusted by Leading Brands
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We're proud to serve some of Australia's biggest names in retail,
+              logistics, and commerce.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+          {/* Static Logo Grid */}
+          <div className="flex justify-center items-center gap-12">
             {clients.map((client, index) => (
               <motion.div
-                key={client}
+                key={client.name}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
+                transition={{ delay: index * 0.2 }}
+                className="w-64 h-32 bg-white rounded-lg shadow-md flex items-center justify-center p-6 hover:shadow-lg transition-shadow duration-300"
               >
-                <div className="text-gray-400 text-2xl font-bold hover:text-orange-600 transition-colors cursor-pointer">
-                  {client}
-                </div>
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-w-full max-h-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                />
               </motion.div>
             ))}
           </div>
